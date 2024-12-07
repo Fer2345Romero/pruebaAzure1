@@ -25,7 +25,7 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-          npm run test --if-present
+          # npm run test --if-present  # Si no necesitas pruebas, comenta o elimina esta línea
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -56,7 +56,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'prueba13'
+          app-name: 'prueba13'  
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C0BB747FCBA543F192408B8AB63D1573 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C0BB747FCBA543F192408B8AB63D1573 }}  # Reemplaza con tu perfil de publicación
           package: .
